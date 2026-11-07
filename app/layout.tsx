@@ -1,10 +1,9 @@
 import { Inter, Geist_Mono } from "next/font/google"
-
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
-import Navbar from "@/components/shared/Navbar"
-import Footer from "@/components/shared/Footer"
+import Footer from "./components/shared/Footer"
+import Navbar from "./components/shared/Navbar"
 
 const inter = Inter({ subsets: ["latin"] })
 
