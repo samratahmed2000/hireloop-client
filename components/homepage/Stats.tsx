@@ -84,7 +84,7 @@ const Stats = () => {
           find their dream positions.
         </h2>
 
-        <ul className="mt-12 grid w-full grid-cols-2 gap-3 sm:mt-14 sm:gap-4 lg:mt-16 lg:grid-cols-4">
+        <ul className="mt-12 grid w-full grid-cols-1 gap-3 sm:mt-14 sm:gap-4 md:grid-cols-2 lg:mt-16 lg:grid-cols-4">
           {stats.map((stat) => {
             const Icon = stat.icon
 
