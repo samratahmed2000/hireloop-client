@@ -238,7 +238,7 @@ function AuthEmailForm({ mode }: AuthEmailFormProps) {
         {isSubmitting ? text.submittingLabel : text.submitLabel}
       </Button>
 
-      <FieldSeparator className="[&>span]:bg-neutral-900 [&>span]:text-neutral-500">
+      <FieldSeparator className="[&>span]:bg-card [&>span]:text-muted-foreground">
         Or
       </FieldSeparator>
 
@@ -249,11 +249,11 @@ function AuthEmailForm({ mode }: AuthEmailFormProps) {
         onError={setError}
       />
 
-      <p className="text-center text-sm text-neutral-400">
+      <p className="text-center text-sm text-muted-foreground">
         {text.footerPrompt}{" "}
         <Link
           href={text.footerLinkHref}
-          className="font-medium text-[#9d8cff] underline-offset-4 transition-colors hover:text-[#b9adff] hover:underline"
+          className="font-medium text-[#5b3bf5] underline-offset-4 transition-colors hover:text-[#4a2fe0] hover:underline dark:text-[#9d8cff] dark:hover:text-[#b9adff]"
         >
           {text.footerLinkLabel}
         </Link>

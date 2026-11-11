@@ -51,14 +51,14 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#080808] px-4 pt-16 pb-10 text-white sm:px-6 sm:pt-20 lg:px-8">
+    <footer className="bg-background px-4 pt-16 pb-10 text-foreground sm:px-6 sm:pt-20 lg:px-8">
       <div className="mx-auto w-full max-w-330">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <Link
               href="/"
               aria-label="HireLoop home"
-              className="inline-block rounded-md outline-none focus-visible:ring-3 focus-visible:ring-white/20"
+              className="inline-block rounded-md outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
             >
               <Image
                 src="/assets/images/logo.png"
@@ -68,7 +68,7 @@ const Footer = () => {
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="mt-5 max-w-xs text-sm leading-6 text-neutral-500">
+            <p className="mt-5 max-w-xs text-sm leading-6 text-muted-foreground">
               The AI-native career platform. Built for people who take their
               work seriously.
             </p>
@@ -80,7 +80,7 @@ const Footer = () => {
           >
             {footerSections.map((section) => (
               <div key={section.title}>
-                <h2 className="text-sm font-medium text-[#9d8cff]">
+                <h2 className="text-sm font-medium text-[#5b3bf5] dark:text-[#9d8cff]">
                   {section.title}
                 </h2>
                 <ul className="mt-4 space-y-3">
@@ -88,7 +88,7 @@ const Footer = () => {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm text-neutral-400 transition-colors hover:text-white"
+                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
                         {link.label}
                       </Link>
@@ -100,7 +100,7 @@ const Footer = () => {
           </nav>
         </div>
 
-        <Separator className="my-10 bg-white/10" />
+        <Separator className="my-10 bg-border" />
 
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
@@ -113,7 +113,7 @@ const Footer = () => {
                 aria-label={social.label}
                 className={cn(
                   buttonVariants({ variant: "outline", size: "icon" }),
-                  "border-white/10 bg-white/5 text-neutral-300 hover:bg-white/10 hover:text-white"
+                  "border-border bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground"
                 )}
               >
                 <svg
@@ -129,20 +129,20 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
-            <p className="text-xs text-neutral-500">
+            <p className="text-xs text-muted-foreground">
               Copyright {new Date().getFullYear()} - HireLoop
             </p>
-            <div className="flex items-center gap-3 text-xs text-neutral-500">
+            <div className="flex items-center gap-3 text-xs text-muted-foreground">
               <Link
                 href="/terms"
-                className="transition-colors hover:text-white"
+                className="transition-colors hover:text-foreground"
               >
                 Terms &amp; Policy
               </Link>
               <span aria-hidden>·</span>
               <Link
                 href="/privacy"
-                className="transition-colors hover:text-white"
+                className="transition-colors hover:text-foreground"
               >
                 Privacy Guideline
               </Link>

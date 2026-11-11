@@ -17,7 +17,7 @@ import {
 import { cn } from "@/lib/utils"
 
 const inputGroupClassName =
-  "h-11 rounded-xl border-white/10 bg-white/4 transition-colors has-[[data-slot=input-group-control]:focus-visible]:border-[#5b3bf5]/60 has-[[data-slot=input-group-control]:focus-visible]:ring-[#5b3bf5]/25 has-[[data-slot][aria-invalid=true]]:border-red-400/60 has-[[data-slot][aria-invalid=true]]:ring-red-400/15"
+  "h-11 rounded-xl border-border bg-foreground/5 transition-colors has-[[data-slot=input-group-control]:focus-visible]:border-[#5b3bf5]/60 has-[[data-slot=input-group-control]:focus-visible]:ring-[#5b3bf5]/25 has-[[data-slot][aria-invalid=true]]:border-red-400/60 has-[[data-slot][aria-invalid=true]]:ring-red-400/15"
 
 type AuthFieldProps = Omit<ComponentProps<"input">, "id" | "name"> & {
   id: string
@@ -42,14 +42,14 @@ function AuthField({
 }: AuthFieldProps) {
   return (
     <Field data-invalid={error ? true : undefined}>
-      <FieldLabel htmlFor={id} className="text-neutral-200">
+      <FieldLabel htmlFor={id} className="text-foreground">
         {label}
       </FieldLabel>
 
       <InputGroup className={inputGroupClassName}>
         <InputGroupAddon
           align="inline-start"
-          className="pl-3 text-neutral-500 transition-colors group-focus-within/input-group:text-[#9d8cff]"
+          className="pl-3 text-muted-foreground transition-colors group-focus-within/input-group:text-[#5b3bf5] dark:group-focus-within/input-group:text-[#9d8cff]"
         >
           <Icon className="size-4" />
         </InputGroupAddon>
@@ -61,7 +61,7 @@ function AuthField({
             error ? `${id}-error` : hint ? `${id}-hint` : undefined
           }
           className={cn(
-            "h-full text-sm text-white placeholder:text-neutral-500 md:text-sm",
+            "h-full text-sm text-foreground placeholder:text-muted-foreground md:text-sm",
             className
           )}
           {...props}
@@ -72,7 +72,7 @@ function AuthField({
       {hint && (
         <FieldDescription
           id={`${id}-hint`}
-          className="text-xs text-neutral-500"
+          className="text-xs text-muted-foreground"
         >
           {hint}
         </FieldDescription>
@@ -103,7 +103,7 @@ function PasswordField(props: PasswordFieldProps) {
             aria-label={visible ? "Hide password" : "Show password"}
             aria-pressed={visible}
             onClick={() => setVisible((value) => !value)}
-            className="text-neutral-400 hover:bg-white/5 hover:text-white"
+            className="text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
           >
             {visible ? <EyeOffIcon /> : <EyeIcon />}
           </InputGroupButton>

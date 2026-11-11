@@ -27,7 +27,7 @@ type AuthShellProps = {
 
 function AuthShell({ title, description, children }: AuthShellProps) {
   return (
-    <main className="relative isolate overflow-hidden bg-[#080808] px-4 py-12 text-white sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+    <main className="relative isolate overflow-hidden bg-background px-4 py-12 text-foreground sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 left-1/2 size-120 -translate-x-1/2 rounded-full bg-[#5b3bf5]/15 blur-[120px]" />
         <div className="absolute -right-24 -bottom-40 size-96 rounded-full bg-[#3b1bd8]/25 blur-[120px]" />
@@ -38,7 +38,7 @@ function AuthShell({ title, description, children }: AuthShellProps) {
         <aside className="hidden lg:flex lg:flex-col">
           <Badge
             variant="outline"
-            className="h-7 gap-1.5 rounded-full border-white/10 bg-neutral-900/70 px-3 text-[10px] tracking-[0.08em] text-neutral-400"
+            className="h-7 gap-1.5 rounded-full border-border bg-card/70 px-3 text-[10px] tracking-[0.08em] text-muted-foreground"
           >
             <Sparkles className="text-[#ff8a3d]" />
             FREE TO JOIN
@@ -46,10 +46,10 @@ function AuthShell({ title, description, children }: AuthShellProps) {
 
           <h2 className="mt-6 text-4xl leading-[1.1] font-semibold tracking-tight text-balance">
             Your next role starts at{" "}
-            <span className="text-[#9d8cff]">HireLoop</span>
+            <span className="text-[#5b3bf5] dark:text-[#9d8cff]">HireLoop</span>
           </h2>
 
-          <p className="mt-5 max-w-md text-base leading-7 text-pretty text-neutral-400">
+          <p className="mt-5 max-w-md text-base leading-7 text-pretty text-muted-foreground">
             Build one profile and let the right opportunities find you. Join a
             community of professionals who take their work seriously.
           </p>
@@ -58,9 +58,9 @@ function AuthShell({ title, description, children }: AuthShellProps) {
             {highlights.map((highlight) => (
               <li
                 key={highlight}
-                className="flex items-center gap-3 text-sm text-neutral-300"
+                className="flex items-center gap-3 text-sm text-muted-foreground"
               >
-                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#5b3bf5]/15 text-[#9d8cff]">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-border bg-[#5b3bf5]/15 text-[#5b3bf5] dark:text-[#9d8cff]">
                   <Check className="size-3.5" />
                 </span>
                 {highlight}
@@ -68,25 +68,27 @@ function AuthShell({ title, description, children }: AuthShellProps) {
             ))}
           </ul>
 
-          <div className="mt-10 flex items-center gap-8 border-t border-white/10 pt-6">
+          <div className="mt-10 flex items-center gap-8 border-t border-border pt-6">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <p className="text-2xl font-semibold text-white">
+                <p className="text-2xl font-semibold text-foreground">
                   {stat.value}
                 </p>
-                <p className="mt-0.5 text-xs text-neutral-500">{stat.label}</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
         </aside>
 
         <div className="mx-auto w-full max-w-md lg:max-w-none">
-          <Card className="rounded-2xl border border-white/10 bg-neutral-900 ring-0 [--card-spacing:--spacing(6)] sm:[--card-spacing:--spacing(8)]">
+          <Card className="rounded-2xl border border-border bg-card ring-0 [--card-spacing:--spacing(6)] sm:[--card-spacing:--spacing(8)]">
             <CardHeader>
-              <h1 className="font-heading text-xl leading-snug font-semibold text-white sm:text-2xl">
+              <h1 className="font-heading text-xl leading-snug font-semibold text-foreground sm:text-2xl">
                 {title}
               </h1>
-              <CardDescription className="text-sm leading-6 text-neutral-400">
+              <CardDescription className="text-sm leading-6 text-muted-foreground">
                 {description}
               </CardDescription>
             </CardHeader>

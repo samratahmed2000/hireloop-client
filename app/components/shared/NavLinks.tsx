@@ -21,8 +21,8 @@ function NavLinks({ mobile = false, onNavigate }: NavLinksProps) {
   return (
     <ul
       className={cn(
-        "flex items-center gap-1",
-        mobile && "flex-col items-stretch"
+        "flex items-center gap-1.5",
+        mobile && "flex-col items-stretch gap-1"
       )}
     >
       {navigation.map((item) => {
@@ -36,9 +36,9 @@ function NavLinks({ mobile = false, onNavigate }: NavLinksProps) {
               onClick={onNavigate}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "flex items-center rounded-lg px-3 py-2 text-sm font-medium text-neutral-300 transition-colors outline-none hover:bg-white/5 hover:text-white focus-visible:ring-3 focus-visible:ring-white/20",
-                isActive && "bg-white/5 text-white",
-                mobile && "px-3 py-2.5 text-base"
+                "flex items-center rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/40",
+                isActive && "bg-foreground/10 text-foreground",
+                mobile && "w-full rounded-lg px-3 py-2.5 text-base"
               )}
             >
               {item.label}

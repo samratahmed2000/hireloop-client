@@ -50,7 +50,7 @@ function GoogleAuthButton({
       disabled={disabled || loading}
       aria-busy={loading}
       className={cn(
-        "h-11 w-full cursor-pointer rounded-xl border-white/10 bg-white/5 text-sm font-medium text-neutral-200 hover:bg-white/10 hover:text-white focus-visible:ring-white/20",
+        "h-11 w-full cursor-pointer rounded-xl border-border bg-foreground/5 text-sm font-medium text-foreground hover:bg-foreground/10 hover:text-foreground focus-visible:ring-ring/40",
         className
       )}
     >

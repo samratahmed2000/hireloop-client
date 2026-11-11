@@ -56,8 +56,8 @@ function RoleField({ value, onChange, error, disabled }: RoleFieldProps) {
             <label
               key={role.value}
               className={cn(
-                "flex cursor-pointer flex-col items-center gap-1 rounded-xl border border-white/10 bg-white/4 px-1 py-4 text-center transition-colors",
-                "relative hover:border-white/20 hover:bg-white/6",
+                "flex cursor-pointer flex-col items-center gap-1 rounded-xl border border-border bg-foreground/5 px-1 py-4 text-center transition-colors",
+                "relative hover:border-foreground/20 hover:bg-foreground/10",
                 "has-focus-visible:border-[#5b3bf5]/60 has-focus-visible:ring-3 has-focus-visible:ring-[#5b3bf5]/25",
                 selected && "border-[#5b3bf5]/70 bg-[#5b3bf5]/15",
                 disabled && "cursor-not-allowed opacity-60"
@@ -71,13 +71,15 @@ function RoleField({ value, onChange, error, disabled }: RoleFieldProps) {
                 aria-hidden
                 className={cn(
                   "size-4",
-                  selected ? "text-[#9d8cff]" : "text-neutral-500"
+                  selected
+                    ? "text-[#5b3bf5] dark:text-[#9d8cff]"
+                    : "text-muted-foreground"
                 )}
               />
               <span
                 className={cn(
                   "text-xs font-medium",
-                  selected ? "text-white" : "text-neutral-300"
+                  selected ? "text-foreground" : "text-muted-foreground"
                 )}
               >
                 {role.label}
