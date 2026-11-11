@@ -52,11 +52,11 @@ const Navbar = () => {
 
           <Navigation />
 
-          <ThemeToggle className="ml-2 size-9 border-transparent bg-transparent hover:bg-foreground/5" />
+          <ThemeToggle className="ml-2 size-10 cursor-pointer border-transparent bg-transparent hover:bg-foreground/5" />
         </div>
 
         <div className="flex items-center justify-end gap-2 lg:hidden">
-          <ThemeToggle className="size-10" />
+          <ThemeToggle className="ml-2 size-10 cursor-pointer border-transparent bg-transparent hover:bg-foreground/5" />
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger

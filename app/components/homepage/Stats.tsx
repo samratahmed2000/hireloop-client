@@ -41,14 +41,14 @@ const Stats = () => {
       className="relative isolate flex flex-col justify-center overflow-hidden bg-background px-4 py-20 text-foreground sm:px-6 sm:py-24 lg:min-h-192 lg:justify-end lg:px-8 lg:py-28"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute top-0 left-1/2 hidden w-[150%] max-w-none -translate-x-1/2 translate-y-[-36%] sm:w-[120%] lg:w-[105%] dark:block">
+        <div className="absolute top-0 left-1/2 w-[150%] max-w-none -translate-x-1/2 translate-y-[-36%] sm:w-[120%] lg:w-[105%]">
           <Image
             src="/assets/images/globe.png"
             alt=""
             width={1440}
             height={1882}
             sizes="(min-width: 1024px) 105vw, (min-width: 640px) 120vw, 150vw"
-            className="h-auto w-full select-none"
+            className="h-auto w-full hue-rotate-180 invert select-none dark:hue-rotate-0 dark:invert-0"
           />
         </div>
 

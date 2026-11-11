@@ -157,7 +157,7 @@ function Navigation({ mobile = false, onNavigate }: NavigationProps) {
             aria-label="Sign out"
             title="Sign out"
             className={cn(
-              "shrink-0 rounded-lg border border-border bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground focus-visible:ring-ring/40",
+              "shrink-0 cursor-pointer rounded-lg border border-border bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground focus-visible:ring-ring/40",
               mobile ? "size-11" : "size-10"
             )}
           >
