@@ -1,9 +1,11 @@
 import { Inter, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toast"
 import { cn } from "@/lib/utils"
-import Footer from "./components/shared/Footer"
+
 import Navbar from "./components/shared/Navbar"
+import Footer from "./components/shared/Footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -33,6 +35,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

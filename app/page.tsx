@@ -1,7 +1,7 @@
-import CTA from "./components/homepage/CTA"
-import Hero from "./components/homepage/Hero"
-import Pricing from "./components/homepage/Pricing"
-import Stats from "./components/homepage/Stats"
+import CTA from "@/app/components/homepage/CTA"
+import Hero from "@/app/components/homepage/Hero"
+import Pricing from "@/app/components/homepage/Pricing"
+import Stats from "@/app/components/homepage/Stats"
 
 const Homepage = () => {
   return (
