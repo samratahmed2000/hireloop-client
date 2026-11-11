@@ -10,6 +10,21 @@ export const auth = betterAuth({
     client,
   }),
 
+  user: {
+    additionalFields: {
+      role: {
+        type: ["seeker", "recruiter", "admin"],
+        required: false,
+        defaultValue: "seeker",
+        input: true,
+        transform: {
+          input: (value) =>
+            value === "recruiter" || value === "admin" ? value : "seeker",
+        },
+      },
+    },
+  },
+
   emailAndPassword: {
     enabled: true,
   },
