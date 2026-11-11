@@ -3,10 +3,9 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { MenuIcon } from "lucide-react"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import Navigation from "@/app/components/shared/Navigation"
+import { Button } from "@/components/ui/button"
 import {
   Sheet,
   SheetContent,
@@ -15,101 +14,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { cn } from "@/lib/utils"
-
-const navigation = [
-  { label: "Browse Jobs", href: "/jobs" },
-  { label: "Company", href: "/companies" },
-  { label: "Pricing", href: "/pricing" },
-] as const
-
-const getStartedClassName =
-  "border-transparent bg-[#5b3bf5] text-white shadow-[0_0_24px_rgba(91,59,245,0.28)] hover:bg-[#6a4dff] focus-visible:ring-[#5b3bf5]/50"
-
-type NavigationProps = {
-  mobile?: boolean
-  onNavigate?: () => void
-}
-
-function Navigation({ mobile = false, onNavigate }: NavigationProps) {
-  const pathname = usePathname()
-
-  return (
-    <>
-      <ul
-        className={cn(
-          "flex items-center gap-1",
-          mobile && "flex-col items-stretch"
-        )}
-      >
-        {navigation.map((item) => {
-          const isActive =
-            pathname === item.href || pathname.startsWith(`${item.href}/`)
-
-          return (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                onClick={onNavigate}
-                aria-current={isActive ? "page" : undefined}
-                className={cn(
-                  "flex items-center rounded-lg px-3 py-2 text-sm font-medium text-neutral-300 transition-colors outline-none hover:bg-white/5 hover:text-white focus-visible:ring-3 focus-visible:ring-white/20",
-                  isActive && "bg-white/5 text-white",
-                  mobile && "px-3 py-2.5 text-base"
-                )}
-              >
-                {item.label}
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-
-      <Separator
-        orientation={mobile ? "horizontal" : "vertical"}
-        className={cn(
-          "bg-white/10",
-          mobile ? "my-3" : "mx-2 data-vertical:h-6 data-vertical:self-center"
-        )}
-      />
-
-      <div
-        className={cn(
-          "flex items-center gap-1",
-          mobile && "flex-col items-stretch gap-2"
-        )}
-      >
-        <Link
-          href="/sign-in"
-          onClick={onNavigate}
-          className={cn(
-            buttonVariants({ variant: "ghost" }),
-            "h-10 rounded-lg px-3 text-sm font-medium text-[#9d8cff] hover:bg-white/5 hover:text-[#b9adff]",
-            mobile && "h-11 w-full justify-center text-base"
-          )}
-        >
-          Sign In
-        </Link>
-        <Link
-          href="/sign-up"
-          onClick={onNavigate}
-          className={cn(
-            buttonVariants(),
-            getStartedClassName,
-            "h-10 rounded-lg px-5 text-sm font-semibold",
-            mobile && "h-11 w-full justify-center text-base"
-          )}
-        >
-          Get Started
-        </Link>
-      </div>
-    </>
-  )
-}
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)
-
   const closeMenu = () => setOpen(false)
 
   return (

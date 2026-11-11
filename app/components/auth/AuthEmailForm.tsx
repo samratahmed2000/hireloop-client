@@ -39,7 +39,6 @@ const content = {
     failureMessage: "We couldn't sign you in. Check your details.",
     successTitle: "Signed in",
     successMessage: "Welcome back. Taking you to the homepage.",
-    callbackURL: "/",
     redirectTo: "/",
     footerPrompt: "Don't have an account?",
     footerLinkLabel: "Sign up",
@@ -52,7 +51,6 @@ const content = {
     failureMessage: "We couldn't create your account. Try again.",
     successTitle: "Account created",
     successMessage: "Your HireLoop account is ready. Sign in to continue.",
-    callbackURL: "/sign-in",
     redirectTo: "/sign-in",
     footerPrompt: "Already have an account?",
     footerLinkLabel: "Sign in",
@@ -138,12 +136,10 @@ function AuthEmailForm({ mode }: AuthEmailFormProps) {
             email,
             password,
             role: user.role ?? role,
-            callbackURL: text.callbackURL,
           })
         : await signIn.email({
             email,
             password,
-            callbackURL: text.callbackURL,
           })
 
       if (authError) {

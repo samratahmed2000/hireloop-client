@@ -6,6 +6,7 @@ const client = new MongoClient(process.env.MONGODB_URI as string)
 const db = client.db("hireloopDB")
 
 export const auth = betterAuth({
+  baseURL: process.env.BETTER_AUTH_URL,
   database: mongodbAdapter(db, {
     client,
   }),
@@ -27,6 +28,7 @@ export const auth = betterAuth({
 
   emailAndPassword: {
     enabled: true,
+    autoSignIn: false,
   },
 
   socialProviders: {
