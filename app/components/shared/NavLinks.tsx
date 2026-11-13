@@ -3,12 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-
-const navigation = [
-  { label: "Browse Jobs", href: "/jobs" },
-  { label: "Company", href: "/companies" },
-  { label: "Pricing", href: "/pricing" },
-] as const
+import { useSession } from "@/lib/auth-client"
 
 type NavLinksProps = {
   mobile?: boolean
@@ -17,6 +12,15 @@ type NavLinksProps = {
 
 function NavLinks({ mobile = false, onNavigate }: NavLinksProps) {
   const pathname = usePathname()
+  const { data: session } = useSession()
+  const user = session?.user?.role || "seeker"
+
+  const navigation = [
+    { label: "Browse Jobs", href: "/jobs" },
+    { label: "Company", href: "/companies" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Dashboard", href: `/dashboard/${user || "seeker"}` },
+  ] as const
 
   return (
     <ul
