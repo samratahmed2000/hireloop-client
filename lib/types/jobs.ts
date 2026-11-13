@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export type JobCategory =
   | "engineering"
   | "design"
@@ -32,4 +34,20 @@ export type NewJobInput = {
 export type InsertedJob = {
   acknowledged: boolean
   insertedId: string
+}
+
+export type JobStatus = "active" | "closed" | "draft"
+
+export type Job = NewJobInput & {
+  _id: string
+  createdAt?: string
+  currency?: string
+  applicants?: number
+  status?: JobStatus
+}
+
+export type CategoryMeta = {
+  label: string
+  icon: LucideIcon
+  iconClassName: string
 }
