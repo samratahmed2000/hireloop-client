@@ -6,7 +6,7 @@ import {
   CreditCardIcon,
   FileTextIcon,
   LayoutDashboardIcon,
-  Plus,
+  PlusCircle,
   SettingsIcon,
   UsersIcon,
   WalletIcon,
@@ -62,7 +62,7 @@ export const menuItemsByRole: Record<Role, NavItem[]> = {
       id: "add-job",
       name: "Add Job",
       url: "/dashboard/recruiter/new",
-      icon: Plus,
+      icon: PlusCircle,
     },
     {
       id: "jobs",
