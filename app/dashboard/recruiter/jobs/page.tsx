@@ -15,7 +15,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
-import { getJobs } from "@/lib/actions/jobs"
+import { getJobs } from "@/lib/api/jobs"
 import type { Job } from "@/lib/types/jobs"
 
 export const dynamic = "force-dynamic"

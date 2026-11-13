@@ -1,8 +1,9 @@
 "use server"
 
-import type { InsertedJob, Job, NewJobInput } from "@/lib/types/jobs"
+import type { InsertedJob, NewJobInput } from "@/lib/types/jobs"
 import { baseUrl } from "../utils"
 
+// Add New Job
 export const addNewJob = async (job: NewJobInput): Promise<InsertedJob> => {
   if (!baseUrl) {
     throw new Error("BASE_URL is not configured")
@@ -28,20 +29,7 @@ export const addNewJob = async (job: NewJobInput): Promise<InsertedJob> => {
   return data as InsertedJob
 }
 
-export const getJobs = async (): Promise<Job[]> => {
-  if (!baseUrl) {
-    throw new Error("BASE_URL is not configured")
-  }
-
-  const res = await fetch(`${baseUrl}/jobs`, { cache: "no-store" })
-
-  if (!res.ok) {
-    throw new Error("Failed to load jobs")
-  }
-
-  return (await res.json()) as Job[]
-}
-
+// Edit Job
 export const editJob = async (
   jobId: string,
   job: NewJobInput
@@ -64,6 +52,26 @@ export const editJob = async (
   if (!res.ok) {
     throw new Error(
       typeof data?.message === "string" ? data.message : "Failed to update job"
+    )
+  }
+}
+
+// Delete Job
+export const deleteJob = async (jobId: string): Promise<void> => {
+  if (!baseUrl) {
+    throw new Error("BASE_URL is not configured")
+  }
+
+  const res = await fetch(`${baseUrl}/jobs/${jobId}`, {
+    method: "DELETE",
+    cache: "no-store",
+  })
+
+  const data = await res.json().catch(() => null)
+
+  if (!res.ok) {
+    throw new Error(
+      typeof data?.message === "string" ? data.message : "Failed to delete job"
     )
   }
 }
