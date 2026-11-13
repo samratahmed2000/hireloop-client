@@ -1,5 +1,4 @@
-import {} from "@/components/ui/breadcrumb"
-import NewJobForm from "@/app/components/recruiter/NewJobForm"
+import JobForm from "@/app/components/recruiter/job-form/JobForm"
 
 const NewJobPage = () => {
   return (
@@ -17,7 +16,7 @@ const NewJobPage = () => {
       </header>
 
       <div className="sm:mt-8">
-        <NewJobForm />
+        <JobForm mode="create" />
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { NavItem, Role } from "@/app/types/type"
+import { NavItem, Role } from "@/lib/types/type"
 import {
   BookmarkIcon,
   BriefcaseIcon,

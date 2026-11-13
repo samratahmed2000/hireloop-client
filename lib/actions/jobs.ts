@@ -3,7 +3,7 @@
 import type { InsertedJob, Job, NewJobInput } from "@/lib/types/jobs"
 import { baseUrl } from "../utils"
 
-export const AddNewJob = async (job: NewJobInput): Promise<InsertedJob> => {
+export const addNewJob = async (job: NewJobInput): Promise<InsertedJob> => {
   if (!baseUrl) {
     throw new Error("BASE_URL is not configured")
   }
@@ -40,4 +40,30 @@ export const getJobs = async (): Promise<Job[]> => {
   }
 
   return (await res.json()) as Job[]
+}
+
+export const editJob = async (
+  jobId: string,
+  job: NewJobInput
+): Promise<void> => {
+  if (!baseUrl) {
+    throw new Error("BASE_URL is not configured")
+  }
+
+  const res = await fetch(`${baseUrl}/jobs/${jobId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(job),
+    cache: "no-store",
+  })
+
+  const data = await res.json().catch(() => null)
+
+  if (!res.ok) {
+    throw new Error(
+      typeof data?.message === "string" ? data.message : "Failed to update job"
+    )
+  }
 }

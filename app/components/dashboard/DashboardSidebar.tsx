@@ -18,7 +18,7 @@ import {
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { signOut, useSession } from "@/lib/auth-client"
 import Image from "next/image"
-import { NavItem } from "@/app/types/type"
+import { NavItem } from "@/lib/types/type"
 import { isRole, menuItemsByRole } from "@/lib/menuItemsByRole"
 
 const DashboardSidebar = () => {
