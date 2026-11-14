@@ -1,12 +1,10 @@
 import {
   BanknoteIcon,
-  BookmarkIcon,
   BriefcaseBusinessIcon,
   Building2Icon,
   MapPinIcon,
   TagIcon,
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import type { Job } from "@/lib/types/jobs"
 import {
@@ -57,16 +55,6 @@ function JobCard({ job, className }: JobCardProps) {
                   </span>
                 </p>
               </div>
-
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon-sm"
-                aria-label={`Save ${job.jobTitle}`}
-                className="shrink-0 cursor-pointer text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
-              >
-                <BookmarkIcon />
-              </Button>
             </div>
 
             <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">

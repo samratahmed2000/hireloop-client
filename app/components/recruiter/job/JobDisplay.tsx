@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb"
 import {
   formatDistanceToNowStrict,
   isBefore,
@@ -6,6 +5,7 @@ import {
   parseISO,
   startOfToday,
 } from "date-fns"
+import { ObjectId } from "bson"
 import { cn } from "@/lib/utils"
 import type { Job, JobCategory, JobStatus } from "@/lib/types/jobs"
 import CategoryMeta from "./CategoryMeta"

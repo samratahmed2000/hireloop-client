@@ -1,3 +1,5 @@
+"use client"
+
 import type { Job } from "@/lib/types/jobs"
 import {
   CategoryIcon,
@@ -8,6 +10,10 @@ import {
 import type { DisplayStatus } from "../job/JobDisplay"
 import { Button } from "@/components/ui/button"
 import { BookmarkIcon } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useSession } from "@/lib/auth-client"
+import { applyToJob } from "@/lib/actions/applications"
+import { toast } from "@/components/ui/toast"
 
 const applyButtonClassName =
   "h-10 flex-1 rounded-xl border-transparent bg-[#5b3bf5] px-5 text-sm font-semibold text-white shadow-[0_0_24px_rgba(91,59,245,0.35)] hover:bg-[#6a4dff] focus-visible:ring-[#5b3bf5]/50 disabled:cursor-not-allowed disabled:opacity-60 sm:flex-none"
@@ -29,6 +35,44 @@ const JobDetailsHeader = ({ job }: { job: Job }) => {
   const deadline = getDeadline(job)
   const displayStatus = getDisplayStatus(job, deadline)
   const isOpen = displayStatus === "active"
+
+  const router = useRouter()
+  const { data: session } = useSession()
+  const user = session?.user
+
+  const handleApplyJob = async () => {
+    if (!user) {
+      router.push(`/sign-in?redirectTo=/browse-jobs/${job._id}`)
+      return
+    } else if (user.role === "seeker") {
+      const application = {
+        jobId: job._id,
+        user: user.id,
+        email: user.email,
+        jobTitle: job.jobTitle,
+        jobCategory: job.jobCategory,
+        companyName: job.companyName,
+      }
+
+      const result = await applyToJob(application)
+      console.log(result, "result")
+
+      if (result.insertedId) {
+        toast.add({
+          title: "Job Applied",
+          description: `Successfully applied to ${job.jobTitle}.`,
+          type: "success",
+        })
+        router.push(`/browse-jobs`)
+      }
+    } else {
+      toast.add({
+        title: "Apply Denied",
+        description: "You're not Permitted to apply",
+        type: "error",
+      })
+    }
+  }
 
   return (
     <header className="rounded-2xl border border-border bg-card/70 p-4 backdrop-blur-sm sm:p-5 lg:p-6">
@@ -62,6 +106,7 @@ const JobDetailsHeader = ({ job }: { job: Job }) => {
           </Button>
 
           <Button
+            onClick={handleApplyJob}
             type="button"
             disabled={!isOpen}
             className={`${applyButtonClassName} cursor-pointer`}

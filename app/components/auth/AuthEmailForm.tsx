@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { LockKeyhole, Mail, UserRound } from "lucide-react"
 import { AuthField, PasswordField } from "@/app/components/auth/AuthField"
 import AuthForm from "@/app/components/auth/AuthForm"
@@ -63,6 +63,9 @@ type AuthEmailFormProps = {
 }
 
 function AuthEmailForm({ mode }: AuthEmailFormProps) {
+  const searchParams = useSearchParams()
+  const redirectTo = searchParams.get("redirectTo") ?? "/"
+
   const router = useRouter()
   const text = content[mode]
   const isSignUp = mode === "sign-up"
@@ -153,7 +156,7 @@ function AuthEmailForm({ mode }: AuthEmailFormProps) {
         type: "success",
       })
 
-      router.push(text.redirectTo)
+      router.push(isSignUp ? text.redirectTo : redirectTo)
       router.refresh()
     } catch {
       showError(text.failureTitle, "Something went wrong. Please try again.")
