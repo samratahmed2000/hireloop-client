@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog"
 import type { Job } from "@/lib/types/jobs"
 import JobForm from "../recruiter/job-form/JobForm"
-import { rowActionButtonClassName } from "../recruiter/JobActions"
+import { rowActionButtonClassName } from "../recruiter/job/JobActions"
 
 const EditJobDialog = ({ job }: { job: Job }) => {
   const [open, setOpen] = useState(false)

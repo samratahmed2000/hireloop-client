@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button"
 import { toast } from "@/components/ui/toast"
 import { deleteJob } from "@/lib/actions/jobs"
 import type { Job } from "@/lib/types/jobs"
-import { rowActionButtonClassName } from "../recruiter/JobActions"
+import { rowActionButtonClassName } from "../recruiter/job/JobActions"
 
 const DeleteJobDialog = ({ job }: { job: Job }) => {
   const router = useRouter()

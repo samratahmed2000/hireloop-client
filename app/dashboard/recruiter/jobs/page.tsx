@@ -5,7 +5,7 @@ import {
   RefreshCwIcon,
   ServerCrashIcon,
 } from "lucide-react"
-import JobsTable from "@/app/components/recruiter/JobsTable"
+import JobsTable from "@/app/components/recruiter/job/JobsTable"
 import { Button } from "@/components/ui/button"
 import {
   Empty,

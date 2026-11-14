@@ -8,12 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import {
-  defaultJobSort,
-  isJobSort,
-  jobSortOptions,
-  type JobSort,
-} from "@/app/components/browse/job-sort"
+import { defaultJobSort, isJobSort, JobSort, jobSortOptions } from "./job-sort"
 
 function JobSortSelect() {
   const router = useRouter()

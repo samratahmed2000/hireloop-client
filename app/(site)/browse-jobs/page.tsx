@@ -1,14 +1,5 @@
 import { SearchXIcon, ServerCrashIcon } from "lucide-react"
-import JobCard from "@/app/components/browse/JobCard"
-import JobFilters from "@/app/components/browse/JobFilters"
-import JobSearchBar from "@/app/components/browse/JobSearchBar"
-import JobSortSelect from "@/app/components/browse/JobSortSelect"
-import {
-  defaultJobSort,
-  isJobSort,
-  type JobSort,
-} from "@/app/components/browse/job-sort"
-import { getPostedAt } from "@/app/components/recruiter/JobDisplay"
+import { getPostedAt } from "@/app/components/recruiter/job/JobDisplay"
 import {
   Empty,
   EmptyDescription,
@@ -18,6 +9,15 @@ import {
 } from "@/components/ui/empty"
 import { getBrowseJobs } from "@/lib/api/jobs"
 import type { Job } from "@/lib/types/jobs"
+import {
+  defaultJobSort,
+  isJobSort,
+  JobSort,
+} from "@/app/components/seeker/job-sort"
+import JobSearchBar from "@/app/components/seeker/JobSearchBar"
+import JobFilters from "@/app/components/seeker/JobFilters"
+import JobSortSelect from "@/app/components/seeker/JobSortSelect"
+import JobCard from "@/app/components/seeker/JobCard"
 
 export const dynamic = "force-dynamic"
 

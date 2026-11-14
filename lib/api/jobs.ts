@@ -34,3 +34,18 @@ export const getBrowseJobs = async (query = ""): Promise<Job[]> => {
 
   return (await res.json()) as Job[]
 }
+
+// Job Details
+export const getJobById = async (jobId: string): Promise<Job | null> => {
+  if (!baseUrl) {
+    throw new Error("BASE_URL is not configured")
+  }
+
+  const res = await fetch(`${baseUrl}/jobs/${jobId}`, { cache: "no-store" })
+
+  if (!res.ok) {
+    throw new Error("Failed to load job details")
+  }
+
+  return (await res.json()) as Job | null
+}
