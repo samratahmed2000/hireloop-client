@@ -23,6 +23,8 @@ export function buildJobPayload(
     salaryFrequency: formData.get("salaryFrequency") as SalaryFrequency,
     responsibilities: String(formData.get("responsibilities") ?? "").trim(),
     qualifications: String(formData.get("qualifications") ?? "").trim(),
+    applicants: 0,
+    status: "active",
   }
 }
 

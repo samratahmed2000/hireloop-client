@@ -61,7 +61,7 @@ const DeleteJobDialog = ({ job }: { job: Job }) => {
           <Button
             variant="destructive"
             size="sm"
-            className={rowActionButtonClassName}
+            className={`${rowActionButtonClassName} cursor-pointer`}
             aria-label={`Delete ${job.jobTitle}`}
           >
             <Trash2Icon />
@@ -78,20 +78,25 @@ const DeleteJobDialog = ({ job }: { job: Job }) => {
             <Trash2Icon />
           </AlertDialogMedia>
           <AlertDialogTitle>Delete job post?</AlertDialogTitle>
-          <AlertDialogDescription className="break-words">
+          <AlertDialogDescription className="wrap-break-word">
             <span className="font-medium text-foreground">{job.jobTitle}</span>{" "}
             will be permanently deleted. This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
 
         <AlertDialogFooter>
-          <AlertDialogCancel variant="outline" disabled={isDeleting}>
+          <AlertDialogCancel
+            variant="outline"
+            disabled={isDeleting}
+            className="cursor-pointer"
+          >
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction
             variant="destructive"
             onClick={handleDeleteJob}
             disabled={isDeleting}
+            className="cursor-pointer"
           >
             {isDeleting ? (
               <Loader2Icon className="animate-spin" />

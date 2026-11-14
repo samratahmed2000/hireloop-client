@@ -26,7 +26,7 @@ const EditJobDialog = ({ job }: { job: Job }) => {
           <Button
             variant="outline"
             size="sm"
-            className={rowActionButtonClassName}
+            className={`${rowActionButtonClassName} cursor-pointer`}
             aria-label={`Edit ${job.jobTitle}`}
           >
             <PencilIcon />

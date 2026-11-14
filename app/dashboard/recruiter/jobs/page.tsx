@@ -76,7 +76,7 @@ const JobsPage = async () => {
               variant="outline"
               nativeButton={false}
               className="h-9 rounded-xl px-4"
-              render={<a href="/dashboard/recruiter/jobs" />}
+              render={<Link href="/dashboard/recruiter/jobs" />}
             >
               <RefreshCwIcon />
               Try again

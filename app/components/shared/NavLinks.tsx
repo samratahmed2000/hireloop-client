@@ -16,7 +16,7 @@ function NavLinks({ mobile = false, onNavigate }: NavLinksProps) {
   const user = session?.user?.role || "seeker"
 
   const navigation = [
-    { label: "Browse Jobs", href: "/jobs" },
+    { label: "Browse Jobs", href: "/browse-jobs" },
     { label: "Company", href: "/companies" },
     { label: "Pricing", href: "/pricing" },
     { label: "Dashboard", href: `/dashboard/${user || "seeker"}` },

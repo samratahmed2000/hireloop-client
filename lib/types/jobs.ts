@@ -1,4 +1,4 @@
-import { LucideIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react"
 
 export type JobCategory =
   | "engineering"
@@ -29,6 +29,8 @@ export type NewJobInput = {
   salaryFrequency: SalaryFrequency
   responsibilities: string
   qualifications: string
+  applicants?: number
+  status?: JobStatus
 }
 
 export type InsertedJob = {
@@ -42,8 +44,6 @@ export type Job = NewJobInput & {
   _id: string
   createdAt?: string
   currency?: string
-  applicants?: number
-  status?: JobStatus
 }
 
 export type CategoryMeta = {

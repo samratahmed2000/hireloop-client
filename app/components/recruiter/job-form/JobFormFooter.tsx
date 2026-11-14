@@ -27,7 +27,7 @@ function JobFormFooter({
         <Button
           type="button"
           variant="outline"
-          className="h-10 rounded-xl px-5"
+          className="h-10 cursor-pointer rounded-xl px-5"
           onClick={onCancel}
         >
           Cancel
