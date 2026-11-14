@@ -38,7 +38,7 @@ const content = {
     failureTitle: "Couldn't sign you in",
     failureMessage: "We couldn't sign you in. Check your details.",
     successTitle: "Signed in",
-    successMessage: "Welcome back. Taking you to the homepage.",
+    successMessage: "Welcome back. Redirecting you now.",
     redirectTo: "/",
     footerPrompt: "Don't have an account?",
     footerLinkLabel: "Sign up",
@@ -62,9 +62,15 @@ type AuthEmailFormProps = {
   mode: AuthMode
 }
 
+// Only allow same-site paths so the redirect param can't bounce users elsewhere.
+const getSafeRedirect = (value: string | null) =>
+  value && value.startsWith("/") && !value.startsWith("//") ? value : "/"
+
 function AuthEmailFormFields({ mode }: AuthEmailFormProps) {
   const searchParams = useSearchParams()
-  const redirectTo = searchParams.get("redirectTo") ?? "/"
+  const redirectTo = getSafeRedirect(searchParams.get("redirectTo"))
+  const redirectQuery =
+    redirectTo === "/" ? "" : `?redirectTo=${encodeURIComponent(redirectTo)}`
 
   const router = useRouter()
   const text = content[mode]
@@ -156,7 +162,7 @@ function AuthEmailFormFields({ mode }: AuthEmailFormProps) {
         type: "success",
       })
 
-      router.push(isSignUp ? text.redirectTo : redirectTo)
+      router.push(isSignUp ? `${text.redirectTo}${redirectQuery}` : redirectTo)
       router.refresh()
     } catch {
       showError(text.failureTitle, "Something went wrong. Please try again.")
@@ -246,7 +252,7 @@ function AuthEmailFormFields({ mode }: AuthEmailFormProps) {
       </FieldSeparator>
 
       <GoogleSignIn
-        callbackURL="/"
+        callbackURL={redirectTo}
         disabled={isSubmitting}
         onStart={() => setError(null)}
         onError={setError}
@@ -255,7 +261,7 @@ function AuthEmailFormFields({ mode }: AuthEmailFormProps) {
       <p className="text-center text-sm text-muted-foreground">
         {text.footerPrompt}{" "}
         <Link
-          href={text.footerLinkHref}
+          href={`${text.footerLinkHref}${redirectQuery}`}
           className="font-medium text-[#5b3bf5] underline-offset-4 transition-colors hover:text-[#4a2fe0] hover:underline dark:text-[#9d8cff] dark:hover:text-[#b9adff]"
         >
           {text.footerLinkLabel}
