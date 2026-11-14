@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, type FormEvent } from "react"
+import { Suspense, useState, type FormEvent } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { LockKeyhole, Mail, UserRound } from "lucide-react"
@@ -62,7 +62,7 @@ type AuthEmailFormProps = {
   mode: AuthMode
 }
 
-function AuthEmailForm({ mode }: AuthEmailFormProps) {
+function AuthEmailFormFields({ mode }: AuthEmailFormProps) {
   const searchParams = useSearchParams()
   const redirectTo = searchParams.get("redirectTo") ?? "/"
 
@@ -262,6 +262,26 @@ function AuthEmailForm({ mode }: AuthEmailFormProps) {
         </Link>
       </p>
     </AuthForm>
+  )
+}
+
+function AuthEmailFormFallback() {
+  return (
+    <div aria-hidden="true" className="flex flex-col gap-5">
+      <div className="h-11 animate-pulse rounded-xl bg-muted/60" />
+      <div className="h-11 animate-pulse rounded-xl bg-muted/60" />
+      <div className="h-11 animate-pulse rounded-xl bg-muted/60" />
+      <div className="h-11 animate-pulse rounded-xl bg-muted/60" />
+      <div className="h-11 animate-pulse rounded-xl bg-muted/60" />
+    </div>
+  )
+}
+
+function AuthEmailForm({ mode }: AuthEmailFormProps) {
+  return (
+    <Suspense fallback={<AuthEmailFormFallback />}>
+      <AuthEmailFormFields mode={mode} />
+    </Suspense>
   )
 }
 
