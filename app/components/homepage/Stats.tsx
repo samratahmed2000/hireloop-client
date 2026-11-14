@@ -94,19 +94,24 @@ const Stats = () => {
 
             return (
               <li key={stat.label}>
-                <Card className="h-full gap-8 rounded-xl border border-border bg-card/80 py-5 shadow-[0_24px_80px_-32px_rgba(0,0,0,0.12)] ring-0 backdrop-blur-xl transition-colors hover:border-foreground/20 hover:bg-card/90 dark:shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)]">
-                  <CardHeader className="px-5">
-                    <Icon
-                      aria-hidden
-                      className="size-4 text-muted-foreground"
-                      strokeWidth={1.75}
-                    />
+                <Card className="group relative flex h-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-6 text-center shadow-[0_24px_80px_-32px_rgba(0,0,0,0.12)] ring-0 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-foreground/25 hover:bg-card/90 sm:p-7 lg:p-6 dark:shadow-[0_24px_80px_-32px_rgba(0,0,0,0.9)]">
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-foreground/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                  <CardHeader className="flex w-auto items-center justify-center p-0">
+                    <div className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-border/50 bg-muted/40 transition-colors duration-300 group-hover:border-foreground/20 group-hover:bg-muted/80 md:size-14">
+                      <Icon
+                        aria-hidden
+                        className="size-6 text-muted-foreground transition-colors duration-300 group-hover:text-foreground md:size-7"
+                        strokeWidth={1.75}
+                      />
+                    </div>
                   </CardHeader>
-                  <CardContent className="px-5">
-                    <p className="text-4xl leading-none font-semibold tracking-tight text-foreground sm:text-[2.75rem]">
+
+                  <CardContent className="w-auto min-w-0 p-0">
+                    <p className="text-3xl leading-none font-bold tracking-tight text-foreground tabular-nums sm:text-4xl lg:text-[2.5rem]">
                       {stat.value}
                     </p>
-                    <p className="mt-2 text-xs text-muted-foreground sm:text-sm">
+                    <p className="mt-2 text-xs font-medium text-muted-foreground sm:text-sm">
                       {stat.label}
                     </p>
                   </CardContent>
