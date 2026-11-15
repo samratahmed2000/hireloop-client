@@ -15,6 +15,7 @@ import { useSession } from "@/lib/auth-client"
 import { applyToJob } from "@/lib/actions/applications"
 import { toast } from "@/components/ui/toast"
 import { getApplicationsCount } from "@/lib/api/applications"
+import { getUserPremiumById } from "@/lib/api/users"
 
 const applyButtonClassName =
   "h-10 flex-1 rounded-xl border-transparent bg-[#5b3bf5] px-5 text-sm font-semibold text-white shadow-[0_0_24px_rgba(91,59,245,0.35)] hover:bg-[#6a4dff] focus-visible:ring-[#5b3bf5]/50 disabled:cursor-not-allowed disabled:opacity-60 sm:flex-none"
@@ -46,9 +47,12 @@ const JobDetailsHeader = ({ job }: { job: Job }) => {
       router.push(`/sign-in?redirectTo=/browse-jobs/${job._id}`)
       return
     } else if (user.role === "seeker") {
+      const premiumResult = await getUserPremiumById(user.id)
+      console.log("Premium Result:", premiumResult, "User ID:", user.id)
+
       const countResult = await getApplicationsCount(`applicantId=${user.id}`)
 
-      if (countResult.count >= 10) {
+      if (!premiumResult.premium && countResult.count >= 10) {
         router.push(`/payment`)
         return
       } else {
