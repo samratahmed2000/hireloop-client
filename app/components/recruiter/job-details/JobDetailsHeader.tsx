@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation"
 import { useSession } from "@/lib/auth-client"
 import { applyToJob } from "@/lib/actions/applications"
 import { toast } from "@/components/ui/toast"
+import { getApplicationsCount } from "@/lib/api/applications"
 
 const applyButtonClassName =
   "h-10 flex-1 rounded-xl border-transparent bg-[#5b3bf5] px-5 text-sm font-semibold text-white shadow-[0_0_24px_rgba(91,59,245,0.35)] hover:bg-[#6a4dff] focus-visible:ring-[#5b3bf5]/50 disabled:cursor-not-allowed disabled:opacity-60 sm:flex-none"
@@ -45,25 +46,32 @@ const JobDetailsHeader = ({ job }: { job: Job }) => {
       router.push(`/sign-in?redirectTo=/browse-jobs/${job._id}`)
       return
     } else if (user.role === "seeker") {
-      const application = {
-        jobId: job._id,
-        user: user.id,
-        email: user.email,
-        jobTitle: job.jobTitle,
-        jobCategory: job.jobCategory,
-        companyName: job.companyName,
-      }
+      const countResult = await getApplicationsCount(`applicantId=${user.id}`)
 
-      const result = await applyToJob(application)
-      console.log(result, "result")
+      if (countResult.count >= 10) {
+        router.push(`/payment`)
+        return
+      } else {
+        const application = {
+          jobId: job._id,
+          user: user.id,
+          email: user.email,
+          jobTitle: job.jobTitle,
+          jobCategory: job.jobCategory,
+          companyName: job.companyName,
+        }
 
-      if (result.insertedId) {
-        toast.add({
-          title: "Job Applied",
-          description: `Successfully applied to ${job.jobTitle}.`,
-          type: "success",
-        })
-        router.push(`/browse-jobs`)
+        const result = await applyToJob(application)
+        console.log(result, "result")
+
+        if (result.insertedId) {
+          toast.add({
+            title: "Job Applied",
+            description: `Successfully applied to ${job.jobTitle}.`,
+            type: "success",
+          })
+          router.push(`/browse-jobs`)
+        }
       }
     } else {
       toast.add({

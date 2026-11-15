@@ -13,11 +13,11 @@ import {
   defaultJobSort,
   isJobSort,
   JobSort,
-} from "@/app/components/seeker/job-sort"
-import JobSearchBar from "@/app/components/seeker/JobSearchBar"
-import JobFilters from "@/app/components/seeker/JobFilters"
-import JobSortSelect from "@/app/components/seeker/JobSortSelect"
-import JobCard from "@/app/components/seeker/JobCard"
+} from "@/app/components/seeker/jobs/job-sort"
+import JobSearchBar from "@/app/components/seeker/jobs/JobSearchBar"
+import JobFilters from "@/app/components/seeker/jobs/JobFilters"
+import JobSortSelect from "@/app/components/seeker/jobs/JobSortSelect"
+import JobCard from "@/app/components/seeker/jobs/JobCard"
 
 export const dynamic = "force-dynamic"
 
